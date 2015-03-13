@@ -19,7 +19,7 @@ var Producte = db.model('Producte', {
             },
             
             preu: {
-                type: String,
+                type: Number,
                 required: true
             }
     });

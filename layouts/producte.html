@@ -19,11 +19,39 @@
                         <h4><strong>{{producte.nom}}</strong></h4>
                         <p>{{producte.codi}}</p>
                         <p>{{producte.seccio}}</p>
-                        <p>{{producte.preu}}</p>
+                        <p>{{producte.preu}}<span> euros</span>
+                        </p>
+                        <div>
+                            <button class="btn btn-danger btn-lg list-group col-xs-3 col-sm-3 col-md-3" ng-click="borrarProducte(producte)">Esborrar</button>
+                            <button class="btn btn-info btn-lg list-group col-xs-3 col-sm-3 col-md-3" ng-click="editarProducte(producte)">Editar</button>
+                        </div>
                     </div>
                 </div>
             </li>
         </ul>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <form role="form">
+                <fieldset>
+                    <legend>Producte Nou</legend>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Nom
+                            <input ng-model="nomProducte" class="form-control" />
+                            <br> Codi
+                            <input ng-model="codiProducte" class="form-control" />
+                            <br> Seccio
+                            <input ng-model="producteSeccio" class="form-control" />
+                            <br> Preu
+                            <input ng-model="productePreu" class="form-control" />
+                            <br>
+                            <button class="btn btn-success btn-lg" ng-click="afegirProducte()">Afegir</button>
+                            <button class="btn btn-lg" ng-click="cancelarProducte()">Cancelar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
 
         <div class="col-xs-4 col-sm-4 col-md-4">
             <form role="form">
@@ -57,23 +85,24 @@
                 </fieldset>
             </form>
         </div>
+
         <div class="col-xs-4 col-sm-4 col-md-4">
             <form role="form">
                 <fieldset>
-                    <legend>Producte Nou</legend>
+                    <legend>Editar Producte</legend>
                     <div class="form-group">
                         <div class="input-group">
                             Nom
-                            <input ng-model="nomProducte" class="form-control" />
+                            <input ng-model="nomEditat" class="form-control" />
                             <br> Codi
-                            <input ng-model="codiProducte" class="form-control" />
+                            <input ng-model="codiEditat" class="form-control" />
                             <br> Seccio
-                            <input ng-model="seccioProducte" class="form-control" />
+                            <input ng-model="seccioEditat" class="form-control" />
                             <br> Preu
-                            <input ng-model="preuProducte" class="form-control" />
+                            <input ng-model="preuEditat" class="form-control" />
                             <br>
-                            <button class="btn btn-success btn-lg" ng-click="afegirProducte()">Afegir</button>
-                            <button class="btn btn-lg" ng-click="cancelarProducte()">Cancelar</button>
+                            <button class="btn btn-success btn-lg" ng-click="actualitzarProducte()">Editar</button>
+                            <button class="btn btn-lg" ng-click="cancelarEdicio()">Cancelar</button>
                         </div>
                     </div>
                 </fieldset>
