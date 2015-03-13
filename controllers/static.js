@@ -1,13 +1,11 @@
 var express = require("express");
-var router = express.Router();
-var options = {
-    root: __dirname + "/../layouts"
-};
+var bodyParser = require("body-parser");
+var app = express();
 
-router.use(express.static(__dirname+"/../assets"));
-router.get('/', function(req, res, next) {
-    
-    res.sendFile("examen.html", options);
+app.use(bodyParser.json());
+app.use("/api/llibres", require("./controller/api/llibres"));
+app.use("/",require("./controller/static"));
+
+app.listen(process.env.PORT, function() {
+    console.log('Server listening on', process.env.PORT);
 });
-
-module.exports = router;

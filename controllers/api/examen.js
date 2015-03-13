@@ -1,23 +1,25 @@
-var Examen = require("../../models/examen");
+// Zona on crearem que fa cada funció en la nostra api.
+
+var Llibre = require("../../models/llibre");
 var router = require("express").Router();
 router.get("/", function(req, res, next) {
-    Examen.find()
+    Llibre.find()
             .sort('-date')
-            .exec(function(err, examen) {
+            .exec(function(err, llibre) {
         if (err) {
             return next(err);
         }
-        res.json(examen);
+        res.json(llibre);
     });
     
 });
 
 router.post("/", function (req,res,next) {
-    var examen = new Examen({
+    var llibre = new Llibre({
         "titol" : req.body.titol,
         "isbn": req.body.isbn
     });
-    console.log(examen);
+    console.log(llibre);
     llibre.save(function(err, llibre) {
         if (err) { return next(err) }
         res.status(201).json(llibre);

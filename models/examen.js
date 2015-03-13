@@ -1,8 +1,8 @@
-// JSON que conté la estructura del nostre objecte
-
 var db = require("../db");
 
-var Examen = db.model('Examen', {
+// JSON que conté les parts del llibre
+
+var Llibre = db.model('Llibre', {
     
             isbn: {
                 type: String,
@@ -26,4 +26,4 @@ var Examen = db.model('Examen', {
             }
     });
 
-module.exports = Examen;
+module.exports = Llibre;

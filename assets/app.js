@@ -1,5 +1,8 @@
+//Zona del nostre codi on tenim el controlador i les nostres funcions.
+
 var app = angular.module('appLearn', []);
 
+//Creem el controlador
 app.controller('LlibresController', function($scope, LlibresService) {
     LlibresService.fetch()
         .success(function(llibres) {
@@ -8,7 +11,7 @@ app.controller('LlibresController', function($scope, LlibresService) {
         .error(function(e) {
             console.log(e);
         });
-
+    //Desenvolupem la funcio afegirLlibre
     $scope.afegirLlibre = function() {
 
         if (($scope.llibreTitol != undefined) & ($scope.llibreIsbn != undefined)) {
@@ -24,6 +27,7 @@ app.controller('LlibresController', function($scope, LlibresService) {
         }
     };
 
+     //Desenvolupem la funcio esborrar llibre
     $scope.borrarLlibre = function(llibre) {
 
         LlibresService.delete(llibre.isbn)
@@ -32,7 +36,30 @@ app.controller('LlibresController', function($scope, LlibresService) {
             });
 
     };
+    
+    //Cancelem l'acció POST
+    $scope.cancelarLlibre = function(llibre) {
 
+        if (($scope.llibreTitol != undefined) & ($scope.llibreIsbn != undefined)) {
+            
+            $scope.llibreIsbn = null;
+            $scope.llibreTitol = null; 
+            
+        }
+    };
+    
+    //Cancelem l'acció PUT
+    $scope.cancelarEdicio = function(llibre) {
+
+        if (($scope.editarTitol != undefined) & ($scope.editarIsbn != undefined)) {
+            
+            $scope.editarIsbn = null;
+            $scope.editarTitol = null; 
+            
+        }
+    };
+
+    // Traspassem informació a les variables del HTML
     $scope.editarLlibre = function(llibre) {
 
         $scope.editarTitol = llibre.titol;
@@ -41,9 +68,10 @@ app.controller('LlibresController', function($scope, LlibresService) {
         $scope.llibre_Editar = llibre;
 
 
-
     };
 
+    
+    // Actualitzem les dades del llibre a editar
     $scope.actualitzarLlibre = function() {
 
         if (($scope.editarTitol != undefined) & ($scope.editarIsbn != undefined)) {
@@ -64,6 +92,7 @@ app.controller('LlibresController', function($scope, LlibresService) {
     };
 });
 
+// Creem el nostre service, on tindrem creades la nostra llista de funcions (post, put, get, delete).
 app.service("LlibresService", function($http) {
     this.fetch = function() {
         return $http.get("/api/llibres");
@@ -74,7 +103,7 @@ app.service("LlibresService", function($http) {
     this.delete = function(isbn) {
         return $http.delete("/api/llibres/" + isbn);
     };
-
+    // Li passem un json i el id del llibre que volem editar
     this.update = function(isbn, llibre) {
         return $http.put("/api/llibres/" + isbn, llibre);
     };
