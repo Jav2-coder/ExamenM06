@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exàmen M06</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" />
+</head>
+
+<body ng-app='appLearn'>
+    <div class="container" ng-controller="ProductesController">
+        <div class="jumbotron text-center">
+            <h1>Exàmen M06 - Botiga</h1>
+        </div>
+        <ul class="list-group col-xs-8 col-sm-8 col-md-8">
+            <li class="list-group-item" ng-repeat="producte in productes">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <h4><strong>{{producte.nom}}</strong></h4>
+                        <p>{{producte.codi}}</p>
+                        <p>{{producte.seccio}}</p>
+                        <p>{{producte.preu}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <form role="form">
+                <fieldset>
+                    <legend>Cerca: Seccio</legend>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Nom de la seccio
+                            <input ng-model="seccioProducte" class="form-control" />
+                            <br>
+                            <button class="btn btn-success btn-lg" ng-click="cercarPerSeccio()">Cercar</button>
+                            <button class="btn btn-lg" ng-click="cancelarCercaSeccio()">Cancelar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <form role="form">
+                <fieldset>
+                    <legend>Cerca: Preu</legend>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Preu a cercar
+                            <input ng-model="preuProducte" class="form-control" />
+                            <br>
+                            <button class="btn btn-success btn-lg" ng-click="cercarPerPreu()">Cercar</button>
+                            <button class="btn btn-lg" ng-click="cancelarCercaPreu()">Cancelar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <form role="form">
+                <fieldset>
+                    <legend>Producte Nou</legend>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Nom
+                            <input ng-model="nomProducte" class="form-control" />
+                            <br> Codi
+                            <input ng-model="codiProducte" class="form-control" />
+                            <br> Seccio
+                            <input ng-model="seccioProducte" class="form-control" />
+                            <br> Preu
+                            <input ng-model="preuProducte" class="form-control" />
+                            <br>
+                            <button class="btn btn-success btn-lg" ng-click="afegirProducte()">Afegir</button>
+                            <button class="btn btn-lg" ng-click="cancelarProducte()">Cancelar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
